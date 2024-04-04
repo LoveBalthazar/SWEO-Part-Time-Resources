@@ -6,15 +6,18 @@
 const strings = ['hello', 'goodbye', "what's up"]
 
 const myForEach = (stringsArr, cb) => {
+    //iterate through stringsArr
     for(let string of stringsArr){
-        let printedString = cb(string)
-        console.log(printedString)
+        //invoke callback and save value into a variable
+        const stringResult = cb(string)
+        //print the result
+        console.log(stringResult)
     }
 }
 
-// let printer = (string) => {
-//     return string
-// }
+const printer = (string) => {
+    return string
+}
 
 const stringUpperCase = (string) => {
     return string.toUpperCase()
@@ -32,12 +35,13 @@ const addExclamations = (string) => {
 // problem: write a function that accepts an array of numbers and returns a new array after modifying each element with a callback
 const nums = [1,2,3,4,5]
 
-const myMap = (nums, cb) => {
+const myMap = (numsArr, cb) => {
     const resultArr = []
-    for(let num of nums){
-        //invoke callback, save the value into a variable
+    //iterate through numsArr
+    for(let num of numsArr){
+        //invoke callback and store the value in a variable
         const newNum = cb(num)
-        //add that value into our resultArr
+        //push value into our resultArr
         resultArr.push(newNum)
     }
     return resultArr
@@ -61,16 +65,17 @@ const multiplyFive = (num) => {
 // that satifsy the condition of the callback
 const nums2 = [1,2,3,4,5,6]
 
-const myFilter = (nums, cb) => {
+const myFilter = (numsArr, cb) => {
     const resultArr = []
-    for(let num of nums){
-        //invoke the callback, save true/false into a variable
-        const passedCondition = cb(num)
-        //if callback returned true, push num into resultArr
-        if(passedCondition){
+    //iterate through our numsArr
+    for(let num of numsArr){
+        //store the true/false evaluation of our callback
+        const metCondition = cb(num)
+        //push the current num into the resultArr if our callback returned true
+        if(metCondition){
             resultArr.push(num)
         }
-        // if(passedCondition === true){
+        // if(metCondition === true){
 
         // }
     }
@@ -79,13 +84,15 @@ const myFilter = (nums, cb) => {
 
 const isEven = (num) => {
     // if(num % 2 === 0) return true
-    return (num % 2 === 0)
+    return num % 2 === 0
+    // return ((num % 2) === (0))
     // return false
 }
 
 const isOdd = (num) => {
-    if(num % 2 === 1) return true
-    return false
+    // if(num % 2 === 1) return true
+    return num % 2 !== 0
+    // return false
 }
 
 console.log(myFilter(nums2, isEven))
